@@ -3,8 +3,8 @@
 /// \file
 /// \brief This file contains definition of Apex.OS string class
 
-#ifndef CONTAINERS__STRING_HPP_
-#define CONTAINERS__STRING_HPP_
+#ifndef APEX_CONTAINERS__STRING_HPP_
+#define APEX_CONTAINERS__STRING_HPP_
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic warning "-Wcpp"
@@ -13,4 +13,4 @@
 
 #include "string/string.hpp"
 
-#endif  // CONTAINERS__STRING_HPP_
+#endif  // APEX_CONTAINERS__STRING_HPP_

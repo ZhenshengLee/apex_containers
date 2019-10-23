@@ -3,8 +3,8 @@
 /// \file
 /// \brief A memory static vector.
 
-#ifndef CONTAINERS__STATIC_VECTOR_HPP_
-#define CONTAINERS__STATIC_VECTOR_HPP_
+#ifndef APEX_CONTAINERS__STATIC_VECTOR_HPP_
+#define APEX_CONTAINERS__STATIC_VECTOR_HPP_
 
 #include <algorithm>
 #include <vector>
@@ -349,4 +349,4 @@ void swap(apex::static_vector<T> & rhs, apex::static_vector<T> & lhs)
   rhs.swap(lhs);
 }
 }  // namespace std
-#endif  // CONTAINERS__STATIC_VECTOR_HPP_
+#endif  // APEX_CONTAINERS__STATIC_VECTOR_HPP_

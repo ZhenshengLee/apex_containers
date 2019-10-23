@@ -8,7 +8,7 @@ Real-time applications need to avoid memory allocation during runtime.
 Therefore, a memory static vector is provided which only allocates memory
 on construction.
 
-\snippet core/containers/test/containers/test_static_vector_snippets.cpp Basic Static Vector
+\snippet core/apex_containers/test/apex_containers/test_static_vector_snippets.cpp Basic Static Vector
 
 `apex::static_vector` provides the functionality of `std::vector`, with the following exceptions:
 

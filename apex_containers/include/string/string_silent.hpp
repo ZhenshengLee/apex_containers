@@ -6,8 +6,7 @@
 #ifndef STRING__STRING_SILENT_HPP_
 #define STRING__STRING_SILENT_HPP_
 
-#include <apexutils/apexutils.h>
-#include <containers/visibility_control.hpp>
+#include <apex_containers/visibility_control.hpp>
 
 #include <stdexcept>
 #include <cstring>

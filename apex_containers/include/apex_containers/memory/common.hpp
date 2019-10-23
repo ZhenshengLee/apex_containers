@@ -1,7 +1,7 @@
 /// \copyright Copyright 2019 Apex.AI, Inc.
 /// All rights reserved.
-#ifndef CONTAINERS__MEMORY__COMMON_HPP_
-#define CONTAINERS__MEMORY__COMMON_HPP_
+#ifndef APEX_CONTAINERS__MEMORY__COMMON_HPP_
+#define APEX_CONTAINERS__MEMORY__COMMON_HPP_
 
 #include <foonathan/memory/config.hpp>
 #include <foonathan/memory/memory_pool.hpp>
@@ -91,4 +91,4 @@ using scoped_node_allocator =
   std::scoped_allocator_adaptor<node_allocator<T, Mutex>, InnerAlloc...>;
 }  // namespace containers
 }  // namespace apex
-#endif  // CONTAINERS__MEMORY__COMMON_HPP_
+#endif  // APEX_CONTAINERS__MEMORY__COMMON_HPP_

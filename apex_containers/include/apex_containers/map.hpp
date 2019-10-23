@@ -1,9 +1,9 @@
 /// \copyright Copyright 2019 Apex.AI, Inc.
 /// All rights reserved.
-#ifndef CONTAINERS__MAP_HPP_
-#define CONTAINERS__MAP_HPP_
+#ifndef APEX_CONTAINERS__MAP_HPP_
+#define APEX_CONTAINERS__MAP_HPP_
 
-#include <containers/memory/common.hpp>
+#include <apex_containers/memory/common.hpp>
 
 #include <functional>
 #include <map>
@@ -63,4 +63,4 @@ struct NodeSize<multimap<Key, Value, Comp, Mutex>>
 
 }  // namespace containers
 }  // namespace apex
-#endif  // CONTAINERS__MAP_HPP_
+#endif  // APEX_CONTAINERS__MAP_HPP_

@@ -4,7 +4,7 @@
 /// \brief Unit tests for the static_vector example snippets
 
 #include <gtest/gtest.h>
-#include <containers/static_vector.hpp>
+#include <apex_containers/static_vector.hpp>
 
 TEST(static_vector, documentation) {
   ASSERT_ANY_THROW({

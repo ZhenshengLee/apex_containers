@@ -6,8 +6,7 @@
 #ifndef STRING__BASE_STRING_HPP_
 #define STRING__BASE_STRING_HPP_
 
-#include <apexutils/apexutils.h>
-#include <containers/visibility_control.hpp>
+#include <apex_containers/visibility_control.hpp>
 
 #include <stdexcept>
 #include <cstring>

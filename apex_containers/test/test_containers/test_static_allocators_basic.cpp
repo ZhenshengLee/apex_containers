@@ -6,7 +6,7 @@
 #include <gtest/gtest.h>
 
 #include <apex_test_tools/apex_test_tools.hpp>
-#include <containers/static_vector.hpp>
+#include <apex_containers/static_vector.hpp>
 
 #include <string>
 #include <cmath>

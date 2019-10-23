@@ -1,9 +1,9 @@
 /// \copyright Copyright 2019 Apex.AI, Inc.
 /// All rights reserved.
-#ifndef CONTAINERS__LIST_HPP_
-#define CONTAINERS__LIST_HPP_
+#ifndef APEX_CONTAINERS__LIST_HPP_
+#define APEX_CONTAINERS__LIST_HPP_
 
-#include <containers/memory/common.hpp>
+#include <apex_containers/memory/common.hpp>
 
 #include <list>
 
@@ -34,4 +34,4 @@ struct NodeSize<list<T, Mutex>>: std::integral_constant<std::size_t, list_node_s
 }  // namespace memory
 }  // namespace containers
 }  // namespace apex
-#endif  // CONTAINERS__LIST_HPP_
+#endif  // APEX_CONTAINERS__LIST_HPP_
