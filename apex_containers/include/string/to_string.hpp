@@ -1,14 +1,24 @@
-/// \copyright Copyright 2017-2018 Apex.AI, Inc.
-/// All rights reserved.
+// Copyright 2017-2018 Apex.AI, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 /// \file
 /// \brief This file contains definition of Apex.OS to string functions.
 
 #ifndef STRING__TO_STRING_HPP_
 #define STRING__TO_STRING_HPP_
 
-// #include <apexutils/apexutils.h>
-#include <apex_containers/visibility_control.hpp>
-
+#include <apex_containers/apexdef.h>
+#include <apex_containers/visibility_control.h>
 
 #include <stdexcept>
 #include <cstring>
@@ -30,32 +40,32 @@ namespace apex
 /// If the c_text_ptr is nullptr (NULL), the output will be "<nullptr>" string.
 /// If the imput string is larger than 255 characters,
 /// the resulting string will be truncated to 255
-CONTAINERS_PUBLIC apex::string256_t to_string(const char8_t * const c_text_ptr) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string256_t to_string(const char8_t * const c_text_ptr) noexcept;
 
 /// \brief Convert a boolean value into an Apex.OS string.
 /// \param[in] value is input boolean value to convert
 /// \return return Apex.OS string that contains text representation of the input value in base 10.
-CONTAINERS_PUBLIC apex::string8_t to_string(const ::bool8_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string8_t to_string(const bool value) noexcept;
 
 /// \brief Convert 8-bit unsigned integer into an Apex.OS string.
 /// \param[in] value is input 8-bit unsigned integer value to convert
 /// \return return Apex.OS string that contains text representation of the input value in base 10.
-CONTAINERS_PUBLIC apex::string16_t to_string(const ::uint8_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string16_t to_string(const ::uint8_t value) noexcept;
 
 /// \brief Convert 16-bit unsigned integer into an Apex.OS string.
 /// \param[in] value is input 16-bit unsigned integer value to convert
 /// \return return Apex.OS string that contains text representation of the input value in base 10.
-CONTAINERS_PUBLIC apex::string16_t to_string(const ::uint16_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string16_t to_string(const ::uint16_t value) noexcept;
 
 /// \brief Convert 32-bit unsigned integer into an Apex.OS string.
 /// \param[in] value is input 32-bit unsigned integer value to convert
 /// \return return Apex.OS string that contains text representation of the input value in base 10.
-CONTAINERS_PUBLIC apex::string16_t to_string(const ::uint32_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string16_t to_string(const ::uint32_t value) noexcept;
 
 /// \brief Convert 64-bit unsigned integer into an Apex.OS string.
 /// \param[in] value is an input 64-bit unsigned integer value to convert
 /// \return return Apex.OS string that contains text representation of the input value in base 10.
-CONTAINERS_PUBLIC apex::string32_t to_string(const uint64_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string32_t to_string(const uint64_t value) noexcept;
 
 #ifndef APEX_WINDOWS
 /// \brief Convert 64-bit unsigned integer into an Apex.OS string.
@@ -71,22 +81,22 @@ inline apex::string32_t to_string(const long long unsigned int value) noexcept  
 /// \brief Convert 8-bit signed integer into an Apex.OS string.
 /// \param[in] value is input 8-bit signed integer value to convert
 /// \return return Apex.OS string that contains text representation of the input value in base 10.
-CONTAINERS_PUBLIC apex::string16_t to_string(const ::int8_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string16_t to_string(const ::int8_t value) noexcept;
 
 /// \brief Convert 16-bit signed integer into an Apex.OS string.
 /// \param[in] value is input 16-bit signed integer value to convert
 /// \return return Apex.OS string that contains text representation of the input value in base 10.
-CONTAINERS_PUBLIC apex::string16_t to_string(const ::int16_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string16_t to_string(const ::int16_t value) noexcept;
 
 /// \brief Convert 32-bit signed integer into an Apex.OS string.
 /// \param[in] value is input 32-bit signed integer value to convert
 /// \return return Apex.OS string that contains text representation of the input value in base 10.
-CONTAINERS_PUBLIC apex::string16_t to_string(const ::int32_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string16_t to_string(const ::int32_t value) noexcept;
 
 /// \brief Convert 64-bit signed integer into an Apex.OS string.
 /// \param[in] value is input 64-bit signed integer value to convert
 /// \return return Apex.OS string that contains text representation of the input value in base 10.
-CONTAINERS_PUBLIC apex::string32_t to_string(const ::int64_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string32_t to_string(const ::int64_t value) noexcept;
 
 #ifndef APEX_WINDOWS
 /// \brief Convert 64-bit signed integer into an Apex.OS string.
@@ -104,14 +114,14 @@ inline apex::string32_t to_string(const long long int value) noexcept  // NOLINT
 /// \param[in] value is input 32-bit float value to convert
 /// \return return Apex.OS string that contains text representation of the input value
 /// using up to 7 digits after the decimal point
-CONTAINERS_PUBLIC apex::string16_t to_string(const ::float32_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string16_t to_string(const ::float32_t value) noexcept;
 
 /// \brief Convert an input 64-bit float to a string in scientific notation
 /// using up to 15 digits after the decimal point
 /// \param[in] value is input 64-bit float value to convert
 /// \return return Apex.OS string that contains text representation of the input value
 /// using up to 15 digits after the decimal point
-CONTAINERS_PUBLIC apex::string32_t to_string(const ::float64_t value) noexcept;
+APEX_CONTAINERS_PUBLIC apex::string32_t to_string(const ::float64_t value) noexcept;
 
 /// \brief Convert an std::string into an Apex.OS string.
 /// \param[in] value is input string value to convert
@@ -158,7 +168,7 @@ inline String<STRING_BUFFER_SIZE> String<STRING_BUFFER_SIZE>::to_string(const ui
 /// \return return Apex.OS string that contains unpacked variadic parameter pack as
 /// apex::string256_t
 template<typename ... Args>
-CONTAINERS_PUBLIC apex::string256_t varargs_to_string(Args const & ... args) noexcept
+APEX_CONTAINERS_PUBLIC apex::string256_t varargs_to_string(Args const & ... args) noexcept
 {
   // This implementation is based on variadic template parameter pack
   // See https://en.cppreference.com/w/cpp/language/parameter_pack
@@ -196,7 +206,7 @@ struct no_separator {};
 /// \return return Apex.OS string that contains unpacked variadic parameter pack as
 /// apex::string256_t
 template<typename ... Args>
-CONTAINERS_PUBLIC
+APEX_CONTAINERS_PUBLIC
 apex::string256_t varargs_to_string(no_separator tag, Args const & ... args) noexcept
 {
   (void)tag;

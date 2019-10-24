@@ -1,14 +1,28 @@
-/// \copyright Copyright 2017-2018 Apex.AI, Inc.
-/// All rights reserved.
+// Copyright 2017-2018 Apex.AI, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 /// \file
 /// \brief This file contains definition of Apex.OS base string classes.
 
 #ifndef STRING__BASE_STRING_HPP_
 #define STRING__BASE_STRING_HPP_
 
-#include <apex_containers/visibility_control.hpp>
+#include <apex_containers/apexdef.h>
+#include <apex_containers/visibility_control.h>
 
 #include <stdexcept>
+#include <climits>
 #include <cstring>
 #include <algorithm>
 #include <istream>
@@ -161,7 +175,7 @@ public:
   /// \return return True if the strings are equal, false otherwise
   /// \throw std::invalid_argument
   /// \throw std::out_of_range
-  bool8_t operator==(const char8_t * const rhs) const
+  bool operator==(const char8_t * const rhs) const
   {
     return this->compare(rhs) == 0;
   }
@@ -262,7 +276,7 @@ public:
   /// \param[in] rhs is the right hand comparand
   /// \return return True if the strings are equal, false otherwise
   template<::size64_t LEN>
-  bool8_t operator==(const BaseString<LEN> & rhs) const
+  bool operator==(const BaseString<LEN> & rhs) const
   {
     const int32_t cmp_retval = compare(0U, npos, rhs);
     return cmp_retval == 0;
@@ -271,7 +285,7 @@ public:
   /// \brief operator==
   /// \param[in] rhs is the right hand comparand
   /// \return return True if the strings are equal, false otherwise
-  bool8_t operator==(const std::string & rhs) const
+  bool operator==(const std::string & rhs) const
   {
     const int32_t cmp_retval = compare(0U, npos, rhs.c_str());
     return cmp_retval == 0;
@@ -280,7 +294,7 @@ public:
   /// \brief operator!=
   /// \param[in] rhs is the right hand comparand up to APEX_STRING_SIZE characters
   /// \return return True if the strings are not equal, false otherwise
-  bool8_t operator!=(const char8_t * const rhs) const
+  bool operator!=(const char8_t * const rhs) const
   {
     return !operator==(rhs);
   }
@@ -289,7 +303,7 @@ public:
   /// \param[in] rhs is the right hand comparand
   /// \return return True if the strings are not equal, false otherwise
   template<::size64_t LEN>
-  bool8_t operator!=(const BaseString<LEN> & rhs) const
+  bool operator!=(const BaseString<LEN> & rhs) const
   {
     return !operator==(rhs);
   }
@@ -297,7 +311,7 @@ public:
   /// \brief operator!=
   /// \param[in] rhs is the right hand comparand
   /// \return return True if the strings are not equal, false otherwise
-  bool8_t operator!=(const std::string & rhs) const
+  bool operator!=(const std::string & rhs) const
   {
     return !operator==(rhs);
   }
@@ -306,7 +320,7 @@ public:
   /// \param[in] rhs is the right hand comparand up to APEX_STRING_SIZE characters
   /// \return return True if rhs is larger
   /// \throw std::invalid_argument
-  bool8_t operator<(const char8_t * const rhs) const
+  bool operator<(const char8_t * const rhs) const
   {
     return this->compare(rhs) < 0;
   }
@@ -315,7 +329,7 @@ public:
   /// \param[in] rhs is the right hand comparand
   /// \return return True if rhs is larger
   template<::size64_t LEN>
-  bool8_t operator<(const BaseString<LEN> & rhs) const
+  bool operator<(const BaseString<LEN> & rhs) const
   {
     const int32_t cmp_retval = compare(0U, npos, rhs);
     return cmp_retval < 0;
@@ -324,7 +338,7 @@ public:
   /// \brief operator<
   /// \param[in] rhs is the right hand comparand
   /// \return return True if rhs is larger
-  bool8_t operator<(const std::string & rhs) const
+  bool operator<(const std::string & rhs) const
   {
     const int32_t cmp_retval = compare(0U, npos, rhs);
     return cmp_retval < 0;
@@ -333,7 +347,7 @@ public:
   /// \brief operator<=
   /// \param[in] rhs is the right hand comparand up to APEX_STRING_SIZE characters
   /// \return return True if rhs is larger or equal
-  bool8_t operator<=(const char8_t * const rhs) const
+  bool operator<=(const char8_t * const rhs) const
   {
     return !operator>(rhs);
   }
@@ -342,7 +356,7 @@ public:
   /// \param[in] rhs is the right hand comparand
   /// \return return True if rhs is larger
   template<::size64_t LEN>
-  bool8_t operator<=(const BaseString<LEN> & rhs) const
+  bool operator<=(const BaseString<LEN> & rhs) const
   {
     return !operator>(rhs);
   }
@@ -350,7 +364,7 @@ public:
   /// \brief operator<
   /// \param[in] rhs is the right hand comparand
   /// \return return True if rhs is larger
-  bool8_t operator<=(const std::string & rhs) const
+  bool operator<=(const std::string & rhs) const
   {
     return !operator>(rhs);
   }
@@ -359,7 +373,7 @@ public:
   /// \param[in] rhs is the right hand comparand up to APEX_STRING_SIZE characters
   /// \return return True if rhs is smaller
   /// \throw std::invalid_argument
-  bool8_t operator>(const char8_t * const rhs) const
+  bool operator>(const char8_t * const rhs) const
   {
     return this->compare(rhs) > 0;
   }
@@ -368,7 +382,7 @@ public:
   /// \param[in] rhs is the right hand comparand
   /// \return return True if rhs is smaller
   template<::size64_t LEN>
-  bool8_t operator>(const BaseString<LEN> & rhs) const
+  bool operator>(const BaseString<LEN> & rhs) const
   {
     const int32_t cmp_retval = compare(0U, npos, rhs);
     return cmp_retval > 0;
@@ -377,7 +391,7 @@ public:
   /// \brief operator>
   /// \param[in] rhs is the right hand comparand
   /// \return return True if rhs is smaller
-  bool8_t operator>(const std::string & rhs) const
+  bool operator>(const std::string & rhs) const
   {
     const int32_t cmp_retval = compare(0U, npos, rhs);
     return cmp_retval > 0;
@@ -386,7 +400,7 @@ public:
   /// \brief operator>=
   /// \param[in] rhs is the right hand comparand up to APEX_STRING_SIZE characters
   /// \return return True if rhs is smaller or equal
-  bool8_t operator>=(const char8_t * const rhs) const
+  bool operator>=(const char8_t * const rhs) const
   {
     return !operator<(rhs);
   }
@@ -395,7 +409,7 @@ public:
   /// \param[in] rhs is the right hand comparand
   /// \return return True if rhs is smaller
   template<size64_t LEN>
-  bool8_t operator>=(const BaseString<LEN> & rhs) const
+  bool operator>=(const BaseString<LEN> & rhs) const
   {
     return !operator<(rhs);
   }
@@ -403,7 +417,7 @@ public:
   /// \brief operator>
   /// \param[in] rhs is the right hand comparand
   /// \return return True if rhs is smaller
-  bool8_t operator>=(const std::string & rhs) const
+  bool operator>=(const std::string & rhs) const
   {
     return !operator<(rhs);
   }
@@ -413,7 +427,7 @@ public:
 
   /// \brief Test whether the string contains anything.
   /// \return true if the string contains no characters; false if it has at least one character.
-  bool8_t empty() const noexcept {return m_string[0U] == '\0';}
+  bool empty() const noexcept {return m_string[0U] == '\0';}
 
   /// \brief return pointer to the internal string buffer.
   const char8_t * c_str() const noexcept

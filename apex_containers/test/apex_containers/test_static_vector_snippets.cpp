@@ -1,4 +1,4 @@
-// Copyright 2017-2018 Apex.AI, Inc.
+// Copyright 2018 Apex.AI, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,14 +13,18 @@
 // limitations under the License.
 
 /// \file
-/// \brief This file aggregates Apex.OS string headers.
+/// \brief Unit tests for the static_vector example snippets
 
-#ifndef STRING__STRING_HPP_
-#define STRING__STRING_HPP_
+#include <gtest/gtest.h>
+#include <apex_containers/static_vector.hpp>
 
-#include "base_string.hpp"
-#include "string_strict.hpp"
-#include "to_string.hpp"
-#include "string_silent.hpp"
-
-#endif  // STRING__STRING_HPP_
+TEST(static_vector, documentation) {
+  ASSERT_ANY_THROW({
+    //! [Basic Static Vector]
+    // Allocates all the memory on construction for 500 elements
+    apex::static_vector<int> v(500);
+    // Trying to allocate more than the initial amount of memory will throw an exception.
+    v.resize(501);
+    //! [Basic Static Vector]
+  });
+}

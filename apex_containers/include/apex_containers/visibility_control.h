@@ -1,5 +1,4 @@
 // Copyright 2017-2019 Apex.AI, Inc.
-// Co-developed by Tier IV, Inc. and Apex.AI, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef APEX_CONTAINERS__VISIBILITY_CONTROL_HPP_
-#define APEX_CONTAINERS__VISIBILITY_CONTROL_HPP_
+#ifndef APEX_CONTAINERS__VISIBILITY_CONTROL_H_
+#define APEX_CONTAINERS__VISIBILITY_CONTROL_H_
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -38,4 +37,4 @@
 #else  // defined(__linux__)
   #error "Unsupported Build Configuration"
 #endif  // defined(__WIN32)
-#endif  // APEX_CONTAINERS__VISIBILITY_CONTROL_HPP_
+#endif  // APEX_CONTAINERS__VISIBILITY_CONTROL_H_

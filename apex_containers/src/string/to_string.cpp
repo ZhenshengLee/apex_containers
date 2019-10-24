@@ -1,6 +1,19 @@
 // Copyright 2017-2018 Apex.AI, Inc.
-// All rights reserved.
-#include "string/to_string.hpp"
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#include <apex_containers/apexdef.h>
+#include <string/to_string.hpp>
 #include <limits>
 #include <cmath>
 
@@ -55,7 +68,7 @@ STR_TYPE templated_unsingned_to_string(
   //lint -e{9067} PCLint False Positive: "extern array declared without size or initializer" NOLINT
   ::char8_t retval_m_string[STR_TYPE::get_buffer_size_static()];  // NOLINT cpplint false positive
 
-  bool8_t digit_happened = false;
+  bool digit_happened = false;
   size64_t str_idx = 0U;
   for (uint32_t i = 0U; i < MAX_DIVIDERS; ++i) {
     const VAL_TYPE digit = (value / dividers[i]) % 10U;
@@ -171,13 +184,13 @@ STR_TYPE ieee754_to_s(const VAL_TYPE denom_value)
   // This one is a false alarm for a compile-time static_assert
   //lint --e{948} NOLINT disable [MISRA C++ Rule 0-1-9] rule check for the following code block
   {
-    constexpr bool8_t val_is_64_bit = std::is_same<VAL_TYPE, float64_t>::value;
-    constexpr bool8_t str_is_32_bytes = std::is_same<STR_TYPE, apex::string32_t>::value;
-    constexpr bool8_t after_dp_is_for_64_bits = POS_AFTER_DP == float_64_pod_after_dp;
-    constexpr bool8_t val_is_32_bit = std::is_same<VAL_TYPE, float32_t>::value;
-    constexpr bool8_t str_is_16_bytes = std::is_same<STR_TYPE, apex::string16_t>::value;
-    constexpr bool8_t after_dp_is_for_32_bits = POS_AFTER_DP == float_32_pod_after_dp;
-    constexpr bool8_t is_ieee754 = std::numeric_limits<VAL_TYPE>::is_iec559;
+    constexpr bool val_is_64_bit = std::is_same<VAL_TYPE, float64_t>::value;
+    constexpr bool str_is_32_bytes = std::is_same<STR_TYPE, apex::string32_t>::value;
+    constexpr bool after_dp_is_for_64_bits = POS_AFTER_DP == float_64_pod_after_dp;
+    constexpr bool val_is_32_bit = std::is_same<VAL_TYPE, float32_t>::value;
+    constexpr bool str_is_16_bytes = std::is_same<STR_TYPE, apex::string16_t>::value;
+    constexpr bool after_dp_is_for_32_bits = POS_AFTER_DP == float_32_pod_after_dp;
+    constexpr bool is_ieee754 = std::numeric_limits<VAL_TYPE>::is_iec559;
 
     // Allow only supported combinations of the template parameters
     static_assert(
@@ -419,7 +432,7 @@ apex::string32_t apex::to_string(const ::float64_t value) noexcept
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-apex::string8_t apex::to_string(const ::bool8_t value) noexcept
+apex::string8_t apex::to_string(const bool value) noexcept
 {
   const apex::string8_t retval = value ? "true" : "false";
   return retval;

@@ -1,9 +1,19 @@
 // Copyright 2017-2018 Apex.AI, Inc.
-// All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #include <string/string.hpp>
 #include <gtest/gtest.h>
-#include <apex_test_tools/apex_test_tools.hpp>
-#include <apexutils/apex_string.h>
 #include <functional>
 #include <utility>
 #include <sstream>
@@ -22,8 +32,6 @@ void check_const_out_idx(const T & str, size64_t idx)
 }
 
 TEST(string, all_cases) {
-  apex_test_tools::memory_test::start();
-
   apex_string_t astr256 = apex_string_create();
 
   memset(astr256.c_str, 0xFFU, APEX_STRING_SIZE);
@@ -31,7 +39,6 @@ TEST(string, all_cases) {
   EXPECT_EQ(str256U.length(), 255U);
   EXPECT_EQ(str256U[255U], '\0');
 
-  apex_test_tools::memory_test::pause();
 
   EXPECT_THROW(str256U[256U], std::out_of_range);
 
@@ -56,7 +63,6 @@ TEST(string, all_cases) {
   EXPECT_STREQ(str5.c_str(), big_str.substr(0U, 255U).c_str());
   EXPECT_EQ(str5[255U], '\0');
 
-  apex_test_tools::memory_test::resume();
 
   apex::String<16U> str16U;
   str16U = big_str.c_str();
@@ -82,7 +88,6 @@ TEST(string, all_cases) {
   EXPECT_EQ(apex_string_add(&astr123, "123"), 3U);
   str16U = astr123 + str3U;
   EXPECT_STREQ(str16U.c_str(), "12300");
-  apex_test_tools::memory_test::stop();
 }
 
 apex::string_strict16_t foo(const apex::string_strict8_t & src)
@@ -98,8 +103,6 @@ apex::string16_t bar(const apex::string8_t & src)
 }
 
 TEST(string, string_typedefs) {
-  apex_test_tools::memory_test::start();
-
   apex::string8_t s8("123");
   apex::string16_t s16(s8);
   apex::string32_t s32 = "1234";
@@ -149,7 +152,6 @@ TEST(string, string_typedefs) {
   EXPECT_TRUE(s8 > ""); //NOLINT, we want comparison op test1
   EXPECT_TRUE(s8 >= ""); //NOLINT, we want comparison op test1
 
-  apex_test_tools::memory_test::pause();
 
   EXPECT_THROW(s8 != nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
   EXPECT_THROW(s8 == nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
@@ -158,7 +160,6 @@ TEST(string, string_typedefs) {
   EXPECT_THROW(s8 > nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
   EXPECT_THROW(s8 >= nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
 
-  apex_test_tools::memory_test::resume();
 
   EXPECT_TRUE(s8 == s8); //NOLINT, we want comparison op test1
   EXPECT_FALSE(s8 != s8); //NOLINT, we want comparison op test1
@@ -201,7 +202,6 @@ TEST(string, string_typedefs) {
   EXPECT_TRUE(s8 <= s256); //NOLINT, we want comparison op test1
   EXPECT_FALSE(s8 > s256); //NOLINT, we want comparison op test1
   EXPECT_FALSE(s8 >= s256); //NOLINT, we want comparison op test1
-  apex_test_tools::memory_test::stop();
 }
 
 template<typename T>
@@ -269,7 +269,6 @@ void test_strings()
 }
 
 TEST(string, iterators) {
-  apex_test_tools::memory_test::start();
   test_strings<apex::string8_t>();
   test_strings<apex::string16_t>();
   test_strings<apex::string32_t>();
@@ -283,7 +282,6 @@ TEST(string, iterators) {
   test_strings<apex::string_strict64_t>();
   test_strings<apex::string_strict128_t>();
   test_strings<apex::string_strict256_t>();
-  apex_test_tools::memory_test::stop();
 }
 
 template<typename T>
@@ -356,17 +354,14 @@ void test_compare_funcs()
   T1 str = "123";
   std::string stl_str = "123";
 
-  apex_test_tools::memory_test::start();
 
   EXPECT_NO_THROW(str.compare(0, 0, "1", 0U));
   EXPECT_NO_THROW(str.compare(1, 0, "1", 0U));
   EXPECT_NO_THROW(str.compare(2, 0, "1", 0U));
   EXPECT_NO_THROW(str.compare(3, 0, "1", 0U));
 
-  apex_test_tools::memory_test::pause();
   EXPECT_THROW(str.compare(0, 0, nullptr, 0U), std::invalid_argument);
   EXPECT_THROW(str.compare(4, 0, "1", 0U), std::out_of_range);
-  apex_test_tools::memory_test::resume();
 
   EXPECT_EQ(str.compare(0, 0, "123", 0U), 0);
   EXPECT_EQ(str.compare(3, 0, "123", 0U), 0);
@@ -403,9 +398,7 @@ void test_compare_funcs()
   EXPECT_NO_THROW(str.compare(2, 0, s1));
   EXPECT_NO_THROW(str.compare(3, 0, s1));
 
-  apex_test_tools::memory_test::pause();
   EXPECT_THROW(str.compare(4, 0, s1), std::out_of_range);
-  apex_test_tools::memory_test::resume();
 
   EXPECT_LT(str.compare(0, 0, s123), 0);
   EXPECT_LT(str.compare(3, 0, s123), 0);
@@ -430,7 +423,6 @@ void test_compare_funcs()
   EXPECT_GT(str.compare(s1), 0);
   EXPECT_LT(str.compare(s1234), 0);
 
-  apex_test_tools::memory_test::stop();
 
   std::string ss1 = s1;
   std::string ss123 = s123;
@@ -490,7 +482,6 @@ TEST(string, test_compare_funcs)
 template<class T>
 void string_test_substr()
 {
-  apex_test_tools::memory_test::start();
   T str = "123";
   EXPECT_STREQ(str.substr(0U).c_str(), "123");
   EXPECT_STREQ(str.substr(1U).c_str(), "23");
@@ -499,7 +490,6 @@ void string_test_substr()
   EXPECT_STREQ(str.substr(str.size(), 1U).c_str(), "");
   EXPECT_STREQ(str.substr(str.size(), T::npos).c_str(), "");
 
-  apex_test_tools::memory_test::pause();
 
   EXPECT_THROW(str.substr(str.size() + 1U), std::out_of_range);
   EXPECT_THROW(str.substr(str.size() + 1U, 1U), std::out_of_range);
@@ -509,7 +499,6 @@ void string_test_substr()
   EXPECT_THROW(str.substr(ULLONG_MAX, 1U), std::out_of_range);
   EXPECT_THROW(str.substr(ULLONG_MAX, T::npos), std::out_of_range);
 
-  apex_test_tools::memory_test::resume();
 
   EXPECT_STREQ(str.substr(0U, 0U).c_str(), "");
   EXPECT_STREQ(str.substr(0U, 1U).c_str(), "1");
@@ -538,7 +527,6 @@ void string_test_substr()
   EXPECT_STREQ(str.substr(3U, 3U).c_str(), "");
   EXPECT_STREQ(str.substr(3U, 4U).c_str(), "");
   EXPECT_STREQ(str.substr(3U, T::npos).c_str(), "");
-  apex_test_tools::memory_test::stop();
 
   EXPECT_THROW(str.substr(4U, 0U).c_str(), std::out_of_range);
   EXPECT_THROW(str.substr(4U, 1U).c_str(), std::out_of_range);

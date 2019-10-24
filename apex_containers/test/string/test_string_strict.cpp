@@ -1,8 +1,18 @@
-// Copyright 2017-2018 Apex.AI, Inc.
-// All rights reserved.
+// Copyright 2018 Apex.AI, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #include <gtest/gtest.h>
-#include <apex_test_tools/apex_test_tools.hpp>
-#include <apexutils/apex_string.h>
 #include <functional>
 #include <utility>
 #include <sstream>
@@ -47,7 +57,6 @@ TEST(string_strict, bad_cases) {
 
 
 TEST(string_strict, good_cases) {
-  apex_test_tools::memory_test::start();
   apex_string_t astr256 = apex_string_create();
   EXPECT_EQ(apex_string_add_strict(&astr256, "256"), APEX_RET_OK);
 
@@ -126,7 +135,6 @@ TEST(string_strict, good_cases) {
   EXPECT_EQ(apex_string_add(&astr123, "123"), 3U);
   str128 = astr123 + str128;
   EXPECT_STREQ(str128.c_str(), "123256");
-  apex_test_tools::memory_test::stop();
 }
 
 TEST(string_strict, strict_string_to_string) {
@@ -165,8 +173,6 @@ apex::string_strict16_t foo_strict(const apex::string_strict8_t & src)
 }
 
 TEST(string_strict, string_typedefs) {
-  apex_test_tools::memory_test::start();
-
   apex::string_strict8_t s8("123");
   apex::string_strict16_t s16(s8);
   apex::string_strict32_t s32 = "1234";
@@ -216,16 +222,12 @@ TEST(string_strict, string_typedefs) {
   EXPECT_TRUE(s8 > ""); //NOLINT, we want comparison op test1
   EXPECT_TRUE(s8 >= ""); //NOLINT, we want comparison op test1
 
-  apex_test_tools::memory_test::pause();
-
   EXPECT_THROW(s8 != nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
   EXPECT_THROW(s8 == nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
   EXPECT_THROW(s8 < nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
   EXPECT_THROW(s8 <= nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
   EXPECT_THROW(s8 > nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
   EXPECT_THROW(s8 >= nullptr, std::invalid_argument); //NOLINT, we want comparison op test1
-
-  apex_test_tools::memory_test::resume();
 
   EXPECT_TRUE(s8 == s8); //NOLINT, we want comparison op test1
   EXPECT_FALSE(s8 != s8); //NOLINT, we want comparison op test1
@@ -268,6 +270,4 @@ TEST(string_strict, string_typedefs) {
   EXPECT_TRUE(s8 <= s256); //NOLINT, we want comparison op test1
   EXPECT_FALSE(s8 > s256); //NOLINT, we want comparison op test1
   EXPECT_FALSE(s8 >= s256); //NOLINT, we want comparison op test1
-
-  apex_test_tools::memory_test::stop();
 }

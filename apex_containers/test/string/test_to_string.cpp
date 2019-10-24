@@ -1,8 +1,19 @@
-// Copyright 2017-2018 Apex.AI, Inc.
-// All rights reserved.
+// Copyright 2018 Apex.AI, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 #include <gtest/gtest.h>
-#include <apex_test_tools/apex_test_tools.hpp>
-#include <apexutils/apex_string.h>
+#include <apex_containers/apexdef.h>
 #include <functional>
 #include <utility>
 #include <sstream>
@@ -63,8 +74,6 @@ void uint_to_string_and_back_templated()
 }
 
 TEST(string, uint_to_string_and_back) {
-  apex_test_tools::memory_test::start();
-
   uint_to_string_and_back_templated<apex::string16_t>();
   uint_to_string_and_back_templated<apex::string32_t>();
   uint_to_string_and_back_templated<apex::string64_t>();
@@ -76,7 +85,6 @@ TEST(string, uint_to_string_and_back) {
   uint_to_string_and_back_templated<apex::string_strict64_t>();
   uint_to_string_and_back_templated<apex::string_strict128_t>();
   uint_to_string_and_back_templated<apex::string_strict256_t>();
-  apex_test_tools::memory_test::stop();
 }
 
 template<class T>
@@ -112,8 +120,6 @@ static void int_to_string_and_back_templated()
 }
 
 TEST(string, int_to_string_and_back) {
-  apex_test_tools::memory_test::start();
-
   int_to_string_and_back_templated<apex::string16_t>();
   int_to_string_and_back_templated<apex::string32_t>();
   int_to_string_and_back_templated<apex::string64_t>();
@@ -125,7 +131,6 @@ TEST(string, int_to_string_and_back) {
   int_to_string_and_back_templated<apex::string_strict64_t>();
   int_to_string_and_back_templated<apex::string_strict128_t>();
   int_to_string_and_back_templated<apex::string_strict256_t>();
-  apex_test_tools::memory_test::stop();
 }
 
 template<class T>
@@ -133,7 +138,6 @@ void float_to_string_and_back_templated()
 {
 #ifndef APEX_OSX
   // OS X's POSIX gcvt call uses dynamic memory calls
-  apex_test_tools::memory_test::start();
 #endif  // APEX_OSX
 
 #define DO_TEST(x) EXPECT_FLOAT_EQ(apex::stof(T(apex::to_string(x))), x)
@@ -161,7 +165,6 @@ void float_to_string_and_back_templated()
 
 #ifndef APEX_OSX
   // OS X's POSIX gcvt call uses dynamic memory calls
-  apex_test_tools::memory_test::stop();
 #endif  // APEX_OSX
 }
 
@@ -448,7 +451,6 @@ TEST(string, test_cstring_to_string) {
 }
 
 TEST(string, to_string_from_string) {
-  apex_test_tools::memory_test::start();
   const apex::string8_t not_a_number("????");
   const apex::string32_t ten_power_20("100000000000000000000");
   const apex::string32_t minus_ten_power_20("-100000000000000000000");
@@ -497,7 +499,6 @@ TEST(string, to_string_from_string) {
   EXPECT_EQ(apex::stoll(apex::string64_t("9223372036854775808")), INT64_MAX);
   EXPECT_EQ(apex::stoll(minus_ten_power_20), INT64_MIN);
   EXPECT_EQ(apex::stoll(ten_power_20), INT64_MAX);
-  apex_test_tools::memory_test::stop();
 }
 
 TEST(string, test_std_string_to_string) {
