@@ -12,6 +12,8 @@
 
   <depend>foonathan_memory_vendor</depend>
 
+  <build_depend>osrf_testing_tools_cpp</build_depend>
+
   <test_depend>ament_lint_common</test_depend>
   <test_depend>ament_lint_auto</test_depend>
 
