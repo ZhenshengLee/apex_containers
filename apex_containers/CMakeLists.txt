@@ -40,7 +40,6 @@ target_compile_options(${PROJECT_NAME}
   PRIVATE $<$<COMPILE_LANGUAGE:CXX>: -Woverloaded-virtual -Wold-style-cast>)
 
 ament_target_dependencies(${PROJECT_NAME}
-    # apexutils
     foonathan_memory)
 
 if(BUILD_TESTING)

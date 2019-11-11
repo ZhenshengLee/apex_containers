@@ -17,6 +17,8 @@
 
 #include <gtest/gtest.h>
 
+#include <apex_test_tools/apex_test_tools.hpp>
+
 #include <array>
 #include <memory>
 
@@ -44,8 +46,10 @@ TYPED_TEST_CASE(SharedPtr, Types);
 TYPED_TEST(SharedPtr, AllocTest)
 {
   auto p1 = std::make_shared<TypeParam>();
+  apex_test_tools::memory_test::start();
   auto p2 = p1;
   auto p3 = p1;
   auto p4 = p2;
   auto p5 = p3;
+  apex_test_tools::memory_test::stop();
 }
