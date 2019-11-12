@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <string.h>
-#include <apex_containers/apex_string.h>
+#include <apexutils/apex_string.h>
 
 /// fill the apex_string_t object with zeroes
 apex_ret_t apex_string_clean(apex_string_t * const str)

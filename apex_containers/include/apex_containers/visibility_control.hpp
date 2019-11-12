@@ -12,29 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef APEX_CONTAINERS__VISIBILITY_CONTROL_H_
-#define APEX_CONTAINERS__VISIBILITY_CONTROL_H_
+/// \file
+/// \brief This file provides visibility control for apex containers shared library
 
+#ifndef APEX_CONTAINERS__VISIBILITY_CONTROL_HPP_
+#define APEX_CONTAINERS__VISIBILITY_CONTROL_HPP_
+
+#include <apexutils/apexdef.h>
 
 ////////////////////////////////////////////////////////////////////////////////
-#if defined(__WIN32)
-  #if defined(APEX_CONTAINERS_BUILDING_DLL) || defined(APEX_CONTAINERS_EXPORTS)
+#if defined(APEX_WINDOWS)
+  #if defined(APEXCPP_BUILDING_DLL) || defined(APEXCPP_EXPORTS)
     #define APEX_CONTAINERS_PUBLIC __declspec(dllexport)
     #define APEX_CONTAINERS_LOCAL
-  #else  // defined(APEX_CONTAINERS_BUILDING_DLL) || defined(APEX_CONTAINERS_EXPORTS)
+  #else  // defined(APEXCPP_BUILDING_DLL) || defined(APEXCPP_EXPORTS)
     #define APEX_CONTAINERS_PUBLIC __declspec(dllimport)
     #define APEX_CONTAINERS_LOCAL
-  #endif  // defined(APEX_CONTAINERS_BUILDING_DLL) || defined(APEX_CONTAINERS_EXPORTS)
-#elif defined(__linux__)
+  #endif  // defined(APEXCPP_BUILDING_DLL) || defined(APEXCPP_EXPORTS)
+#elif defined(APEX_LINUX)
   #define APEX_CONTAINERS_PUBLIC __attribute__((visibility("default")))
   #define APEX_CONTAINERS_LOCAL __attribute__((visibility("hidden")))
-#elif defined(__APPLE__)
+#elif defined(APEX_OSX)
   #define APEX_CONTAINERS_PUBLIC __attribute__((visibility("default")))
   #define APEX_CONTAINERS_LOCAL __attribute__((visibility("hidden")))
-#elif defined(QNX)
+#elif defined(APEX_QNX)
   #define APEX_CONTAINERS_PUBLIC __attribute__((visibility("default")))
   #define APEX_CONTAINERS_LOCAL __attribute__((visibility("hidden")))
-#else  // defined(__linux__)
+#else  // defined(APEX_LINUX)
   #error "Unsupported Build Configuration"
-#endif  // defined(__WIN32)
-#endif  // APEX_CONTAINERS__VISIBILITY_CONTROL_H_
+#endif  // defined(APEX_WINDOWS)
+
+#endif  // APEX_CONTAINERS__VISIBILITY_CONTROL_HPP_

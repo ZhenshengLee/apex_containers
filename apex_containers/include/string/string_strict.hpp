@@ -18,9 +18,9 @@
 #ifndef STRING__STRING_STRICT_HPP_
 #define STRING__STRING_STRICT_HPP_
 
-#include <apex_containers/apexdef.h>
-#include <apex_containers/apex_string.h>
-#include <apex_containers/visibility_control.h>
+#include <apexutils/apexdef.h>
+#include <apexutils/apex_string.h>
+#include <apex_containers/visibility_control.hpp>
 
 #include <stdexcept>
 #include <cstring>

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <gtest/gtest.h>
-#include <apex_containers/apexdef.h>
+#include <apexutils/apexdef.h>
 #include <functional>
 #include <utility>
 #include <sstream>

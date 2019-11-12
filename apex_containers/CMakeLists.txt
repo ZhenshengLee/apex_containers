@@ -15,10 +15,12 @@ set(apex_containers_sources
     include/apex_containers/set.hpp
     include/apex_containers/static_vector.hpp
     include/apex_containers/string.hpp
-    include/apex_containers/apexdef.h
+    include/apexutils/apexdef.h
+    include/apexutils/apex_string.h
+    include/apexutils/visibility_control.h
     include/apex_containers/unordered_map.hpp
     include/apex_containers/unordered_set.hpp
-    include/apex_containers/visibility_control.h
+    include/apex_containers/visibility_control.hpp
     src/string/to_string.cpp
     src/apex_string.c)
 

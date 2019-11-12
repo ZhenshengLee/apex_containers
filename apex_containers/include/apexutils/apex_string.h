@@ -15,11 +15,11 @@
 /// \file
 /// \brief This file declares fixed strings API used in Apex.OS applications
 
-#ifndef APEX_CONTAINERS__APEX_STRING_H_
-#define APEX_CONTAINERS__APEX_STRING_H_
+#ifndef APEXUTILS__APEX_STRING_H_
+#define APEXUTILS__APEX_STRING_H_
 
-#include <apex_containers/visibility_control.h>
-#include <apex_containers/apexdef.h>
+#include <apexutils/visibility_control.h>
+#include <apexutils/apexdef.h>
 
 #ifdef __cplusplus
 extern "C"
@@ -48,13 +48,13 @@ typedef struct _apex_string_s
 
 /// \brief Create clean, empty apex_string_t object on the stack
 /// \return return clean, empty apex_string_t object on the stack
-APEX_CONTAINERS_PUBLIC apex_string_t apex_string_create(void);
+APEXUTILS_PUBLIC apex_string_t apex_string_create(void);
 
 /// \brief fill the apex_string_t object with zeroes
 /// \param[in, out] str pointer to apex_string to clean up
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if str is NULL
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_clean(apex_string_t * const str);
+APEXUTILS_PUBLIC apex_ret_t apex_string_clean(apex_string_t * const str);
 
 /// \brief Add a string or fail if overflow
 /// If overflow predicted, dst not changed
@@ -62,7 +62,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_clean(apex_string_t * const str);
 /// \param[in] src pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or src are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add_strict(
   apex_string_t * const dst,
   const char8_t * const src);
 
@@ -73,7 +73,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add_strict(
 /// \param[in] src2 pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or srcX are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add2_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add2_strict(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2
@@ -87,7 +87,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add2_strict(
 /// \param[in] src3 pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or srcX are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add3_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add3_strict(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -103,7 +103,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add3_strict(
 /// \param[in] src4 pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or srcX are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add4_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add4_strict(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -121,7 +121,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add4_strict(
 /// \param[in] src5 pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or srcX are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add5_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add5_strict(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -141,7 +141,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add5_strict(
 /// \param[in] src6 pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or srcX are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add6_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add6_strict(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -163,7 +163,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add6_strict(
 /// \param[in] src7 pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or srcX are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add7_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add7_strict(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -187,7 +187,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add7_strict(
 /// \param[in] src8 pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or srcX are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add8_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add8_strict(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -213,7 +213,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add8_strict(
 /// \param[in] src9 pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or srcX are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add9_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add9_strict(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -241,7 +241,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add9_strict(
 /// \param[in] src10 pointer to a C string to add to dst
 /// \return return APEX_RET_OK if OK
 /// \return return APEX_RET_ERROR if dst or srcX are NULL or if overflow predicted
-APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add10_strict(
+APEXUTILS_PUBLIC apex_ret_t apex_string_add10_strict(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -263,7 +263,7 @@ APEX_CONTAINERS_PUBLIC apex_ret_t apex_string_add10_strict(
 /// \param[in, out] dst pointer to apex_string to modify
 /// \param[in] src pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add(
+APEXUTILS_PUBLIC size64_t apex_string_add(
   apex_string_t * const dst,
   const char8_t * const src);
 
@@ -273,7 +273,7 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add(
 /// \param[in] src1 pointer to a C string to add to dst
 /// \param[in] src2 pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add2(
+APEXUTILS_PUBLIC size64_t apex_string_add2(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2
@@ -286,7 +286,7 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add2(
 /// \param[in] src2 pointer to a C string to add to dst
 /// \param[in] src3 pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add3(
+APEXUTILS_PUBLIC size64_t apex_string_add3(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -301,7 +301,7 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add3(
 /// \param[in] src3 pointer to a C string to add to dst
 /// \param[in] src4 pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add4(
+APEXUTILS_PUBLIC size64_t apex_string_add4(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -318,7 +318,7 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add4(
 /// \param[in] src4 pointer to a C string to add to dst
 /// \param[in] src5 pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add5(
+APEXUTILS_PUBLIC size64_t apex_string_add5(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -337,7 +337,7 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add5(
 /// \param[in] src5 pointer to a C string to add to dst
 /// \param[in] src6 pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add6(
+APEXUTILS_PUBLIC size64_t apex_string_add6(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -358,7 +358,7 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add6(
 /// \param[in] src6 pointer to a C string to add to dst
 /// \param[in] src7 pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add7(
+APEXUTILS_PUBLIC size64_t apex_string_add7(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -381,7 +381,7 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add7(
 /// \param[in] src7 pointer to a C string to add to dst
 /// \param[in] src8 pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add8(
+APEXUTILS_PUBLIC size64_t apex_string_add8(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -406,7 +406,7 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add8(
 /// \param[in] src8 pointer to a C string to add to dst
 /// \param[in] src9 pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add9(
+APEXUTILS_PUBLIC size64_t apex_string_add9(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -433,7 +433,7 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add9(
 /// \param[in] src9 pointer to a C string to add to dst
 /// \param[in] src10 pointer to a C string to add to dst
 /// \return return number of copied characters, possibly zero
-APEX_CONTAINERS_PUBLIC size64_t apex_string_add10(
+APEXUTILS_PUBLIC size64_t apex_string_add10(
   apex_string_t * const dst,
   const char8_t * const src1,
   const char8_t * const src2,
@@ -451,4 +451,4 @@ APEX_CONTAINERS_PUBLIC size64_t apex_string_add10(
 }
 #endif  // __cplusplus
 
-#endif  // APEX_CONTAINERS__APEX_STRING_H_
+#endif  // APEXUTILS__APEX_STRING_H_

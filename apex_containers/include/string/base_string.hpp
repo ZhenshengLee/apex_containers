@@ -18,8 +18,8 @@
 #ifndef STRING__BASE_STRING_HPP_
 #define STRING__BASE_STRING_HPP_
 
-#include <apex_containers/apexdef.h>
-#include <apex_containers/visibility_control.h>
+#include <apexutils/apexdef.h>
+#include <apex_containers/visibility_control.hpp>
 
 #include <stdexcept>
 #include <climits>
