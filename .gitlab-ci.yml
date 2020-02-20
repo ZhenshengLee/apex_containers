@@ -7,12 +7,9 @@ build:
   stage: build
   image: osrf/ros:dashing-desktop
   script:
-    - source /opt/ros/dashing/setup.bash
-    - sed -i -e 's#ros2/#ros2-testing/#g' /etc/apt/sources.list.d/ros2-latest.list
     - apt-get update
     - rosdep update
     - rosdep install --from apex_containers --ignore-src -y
-    - pip3 install -U colcon-common-extensions pytest
     - mkdir -p /opt/apex_containers
     - '
       colcon build
@@ -31,7 +28,6 @@ build:
       - log
       - build
       - opt.tar.gz
-
 
 test:
   stage: test
