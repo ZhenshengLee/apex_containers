@@ -42,7 +42,7 @@ target_compile_options(${PROJECT_NAME}
   PRIVATE $<$<COMPILE_LANGUAGE:CXX>: -Woverloaded-virtual -Wold-style-cast>)
 
 ament_target_dependencies(${PROJECT_NAME}
-    foonathan_memory)
+    foonathan_memory_vendor)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
