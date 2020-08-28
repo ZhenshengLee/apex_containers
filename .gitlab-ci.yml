@@ -34,6 +34,9 @@ test:
   image: osrf/ros:dashing-desktop
   dependencies:
     - build
+  before_script:
+    - apt-get update
+    - apt-get install -y ros-dashing-apex-test-tools ros-dashing-foonathan-memory-vendor
   script:
     - tar xf opt.tar.gz -C /
     - '
